@@ -21,7 +21,7 @@
 ### Screenshots
 
 <p align="middle">
-    <img src="https://github.com/FroJhoDev/Flutter-Tetris-Game/blob/main/flutter_tetris_game_frojhodev.gif" width="80%">
+    <img src="https://github.com/FroJhoDev/Flutter-Tetris-Game/blob/main/flutter_tetris_game_frojhodev.gif" width="70%">
 </p>
 
 ## 🚀 Configurando para Utilizar
