@@ -43,7 +43,7 @@ Caso você não possua o Flutter instalado a [Documentação Oficial](https://do
 Atraves do terminal, faça o clone do repositorio em uma pasta usando o comando:
 
 ```
-git clone https://github.com/jonathan1313/Flutter-Tetris-Game.git
+git clone https://github.com/FroJhoDev/Flutter-Tetris-Game.git
 ```
 Acesse a pasta com o comando:
 
