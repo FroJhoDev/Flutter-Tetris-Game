@@ -2,7 +2,7 @@
     package="com.example.tetris">
    <application
         android:label="tetris"
-        android:name="${applicationName}"
+        android:name="Tetris Flutter Game"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
