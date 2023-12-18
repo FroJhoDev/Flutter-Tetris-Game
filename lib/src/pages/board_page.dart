@@ -189,7 +189,7 @@ class _BoardPageState extends State<BoardPage> {
   }
 
   // Move left
-  void moveLeft() {
+  void movePieceLeft() {
     // make sure the move is valid before moving there
     if (!checkCollision(Direction.left)) {
       setState(() {
@@ -199,7 +199,7 @@ class _BoardPageState extends State<BoardPage> {
   }
 
   // Move right
-  void moveRight() {
+  void movePieceRight() {
     // make sure the move is valid before moving there
     if (!checkCollision(Direction.right)) {
       setState(() {
@@ -313,8 +313,8 @@ class _BoardPageState extends State<BoardPage> {
               ),
 
               BoardGameControlsComponent(
-                moveLeft: moveLeft,
-                moveRight: moveRight,
+                moveLeft: movePieceLeft,
+                moveRight: movePieceRight,
                 rotatePiece: rotatePiece,
               ),
             ],
