@@ -5,8 +5,8 @@ import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../components/pixel.dart';
-import '../models/piece.dart';
+import '../components/pixel_component.dart';
+import '../models/piece_model.dart';
 import '../utils/values.dart';
 
 /*
@@ -36,7 +36,7 @@ class BoardPage extends StatefulWidget {
 
 class _BoardPageState extends State<BoardPage> {
   // initial tetris piece
-  Piece currentPiece = Piece(type: Tetromino.J);
+  PieceModel currentPiece = PieceModel(type: Tetromino.J);
 
   // initial score
   int currentScore = 0;
@@ -242,7 +242,7 @@ class _BoardPageState extends State<BoardPage> {
     // create a new piece with a random type
     Tetromino randomType =
         Tetromino.values[rand.nextInt(Tetromino.values.length)];
-    currentPiece = Piece(type: randomType);
+    currentPiece = PieceModel(type: randomType);
     currentPiece.initializePiece();
 
     if (isGameOver()) {
@@ -383,7 +383,7 @@ class _BoardPageState extends State<BoardPage> {
 
                     // current piece
                     if (currentPiece.position.contains(index)) {
-                      return Pixel(
+                      return PixelComponent(
                         color: currentPiece.color,
                         filled: true,
                       );
@@ -391,14 +391,14 @@ class _BoardPageState extends State<BoardPage> {
                       // land pieces
                     } else if (gameBoard[row][col] != null) {
                       final Tetromino? tetrominoType = gameBoard[row][col];
-                      return Pixel(
+                      return PixelComponent(
                         color: tetrominoColors[tetrominoType],
                         filled: true,
                       );
 
                       // blank pixel
                     } else {
-                      return Pixel(
+                      return PixelComponent(
                         color: Colors.transparent,
                         filled: false,
                       );

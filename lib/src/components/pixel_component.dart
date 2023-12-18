@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Pixel extends StatelessWidget {
+class PixelComponent extends StatelessWidget {
   var color;
   bool filled;
 
-  Pixel({super.key, required this.color, required this.filled});
+  PixelComponent({super.key, required this.color, required this.filled});
 
   @override
   Widget build(BuildContext context) {

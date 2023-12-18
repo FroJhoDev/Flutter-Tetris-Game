@@ -4,11 +4,11 @@ import 'package:tetris/src/pages/board_page.dart';
 
 import '../utils/values.dart';
 
-class Piece {
+class PieceModel {
   // type of tetris piece
   Tetromino type;
 
-  Piece({required this.type});
+  PieceModel({required this.type});
 
   // the piece is just a list of integers
   List<int> position = [];
