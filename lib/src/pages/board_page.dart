@@ -140,26 +140,6 @@ class _BoardPageState extends State<BoardPage> {
     );
   }
 
-  // void showGameOverDialog() {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //       title: const Text('Game Over'),
-  //       content: Text('Your score is: $currentScore'),
-  //       actions: [
-  //         TextButton(
-  //             onPressed: () {
-  //               // reset the game
-  //               resetGame();
-
-  //               Navigator.pop(context);
-  //             },
-  //             child: const Text('Play Again'))
-  //       ],
-  //     ),
-  //   );
-  // }
-
   // reset the game
   void resetGame() {
     // clear the game board
