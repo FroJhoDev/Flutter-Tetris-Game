@@ -1,13 +1,17 @@
-import 'dart:async';
 import 'dart:math';
+import 'dart:async';
 
-import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../components/pixel_component.dart';
-import '../models/piece_model.dart';
+import '../components/board_background_component.dart';
+import '../components/board_game_controls_component.dart';
+import '../components/board_score_component.dart';
 import '../utils/values.dart';
+import '../models/piece_model.dart';
+
+import '../components/pixel_component.dart';
 
 /*
 
@@ -308,44 +312,11 @@ class _BoardPageState extends State<BoardPage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 27, 68),
       body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                  Color.fromARGB(255, 0, 42, 104),
-                  Color.fromARGB(255, 0, 27, 68),
-                ])),
-          ),
+        children: [          
+          const BoardBackgroundComponent(),
           Column(
             children: [
-              // SCORE
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15.0, horizontal: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Score:'.toUpperCase(),
-                        style: const TextStyle(
-                            color: Colors.white, fontSize: 18.0),
-                      ),
-                      const SizedBox(width: 3.0),
-                      AnimatedFlipCounter(
-                        curve: Curves.bounceInOut,
-                        duration: const Duration(milliseconds: 500),
-                        value: currentScore,
-                        textStyle: TextStyle(
-                            color: Colors.yellow[200], fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              BoardScoreComponent(currentScore: currentScore),
 
               // GEME BOARD
               Expanded(
@@ -387,44 +358,11 @@ class _BoardPageState extends State<BoardPage> {
                 ),
               ),
 
-              // GAME CONTROLS
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // left
-                    IconButton(
-                      onPressed: () => moveLeft(),
-                      color: Colors.yellow[600],
-                      icon: Icon(
-                        MdiIcons.arrowLeftBoldBox,
-                        size: 70.0,
-                      ),
-                    ),
-
-                    // rotate
-                    IconButton(
-                      onPressed: () => rotatePiece(),
-                      color: Colors.yellow[200],
-                      icon: Icon(
-                        MdiIcons.rotateRight,
-                        size: 50.0,
-                      ),
-                    ),
-
-                    // right
-                    IconButton(
-                      onPressed: () => moveRight(),
-                      color: Colors.yellow[600],
-                      icon: Icon(
-                        MdiIcons.arrowRightBoldBox,
-                        size: 70.0,
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              BoardGameControlsComponent(
+                moveLeft: moveLeft,
+                moveRight: moveRight,
+                rotatePiece: rotatePiece,
+              ),
             ],
           ),
         ],
