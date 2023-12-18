@@ -2,16 +2,15 @@ import 'dart:math';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../components/board_background_component.dart';
-import '../components/board_game_controls_component.dart';
-import '../components/board_score_component.dart';
 import '../utils/values.dart';
 import '../models/piece_model.dart';
 
 import '../components/pixel_component.dart';
+import '../components/board_score_component.dart';
+import '../components/board_background_component.dart';
+import '../components/board_game_controls_component.dart';
+import '../components/board_game_over_alert_component.dart';
 
 /*
 
@@ -88,58 +87,13 @@ class _BoardPageState extends State<BoardPage> {
   void showGameOverDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color.fromARGB(255, 0, 27, 68),
-        shadowColor: const Color.fromARGB(255, 0, 84, 210),
-        title: const Text(
-          'Game Over',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Color.fromARGB(255, 255, 17, 0),
-              fontSize: 32.0,
-              fontWeight: FontWeight.bold),
-        ),
-        content: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'FINAL SCORE',
-                style: TextStyle(fontSize: 22.0),
-              ),
-              const SizedBox(height: 10.0),
-              Text(
-                '$currentScore',
-                style: const TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // reset the game
-              resetGame();
-
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Play Again',
-              style: TextStyle(
-                color: Colors.yellow[600],
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-              ),
-            ),
-          )
-        ],
+      builder: (context) => BoardGameOverAlertComponent(
+        currentScore: currentScore,
+        playAgainFunction: () {
+          // reset the game
+          resetGame();
+          Navigator.pop(context);
+        },
       ),
     );
   }
